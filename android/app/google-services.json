@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "1070027079986",
+    "project_id": "fooclic-app",
+    "storage_bucket": "fooclic-app.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1070027079986:android:e4bb966dcafecf9127972b",
+        "android_client_info": {
+          "package_name": "com.example.foodapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1070027079986-if1ar0ie4pfpabva1967u7nb2sco5sma.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBGzhj05pvWs5dZ-Q9vOsHOFdgcrVzkryY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1070027079986-if1ar0ie4pfpabva1967u7nb2sco5sma.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
