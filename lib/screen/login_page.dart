@@ -29,11 +29,12 @@ class LoginPage extends StatelessWidget {
       backgroundColor: Colors.white,
       appBar: AppBar(
         backgroundColor: Colors.white,
+        title: Text(
+          'Login In',
+          style: TextStyle(color: Colors.orange),
+        ),
         leading: IconButton(
-            icon: Icon(
-              Icons.arrow_back_ios,
-              color: Colors.black,
-            ),
+            icon: Icon(Icons.arrow_back_ios, color: Colors.black),
             onPressed: () {
               //Navigator.pop(context);
             }),
@@ -49,7 +50,7 @@ class LoginPage extends StatelessWidget {
               child: Text(
                 "Login In",
                 style: TextStyle(
-                  color: Colors.orange.shade700,
+                  color: Colors.orange,
                   fontSize: 40,
                   fontWeight: FontWeight.bold,
                 ),
