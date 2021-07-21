@@ -1,6 +1,9 @@
 //import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:foodapp/screen/home_page.dart';
+import 'package:foodapp/screen/welcome_page.dart';
 import 'package:foodapp/screen/widget/my_text_field.dart';
+import 'package:foodapp/services/auth.dart';
 
 class SignUp extends StatefulWidget {
   static Pattern pattern =
@@ -11,6 +14,7 @@ class SignUp extends StatefulWidget {
 
 class _SignUpState extends State<SignUp> {
   //UserCredential userCredential;
+  String name = '';
   RegExp regExp = RegExp(SignUp.pattern);
   TextEditingController nombres = TextEditingController();
   TextEditingController apellidos = TextEditingController();
@@ -19,12 +23,14 @@ class _SignUpState extends State<SignUp> {
 
   GlobalKey<ScaffoldState> globalKey = GlobalKey<ScaffoldState>();
 
+  final authService = Auth();
+
   void validation() {
     if (nombres.text.trim().isEmpty || nombres.text.trim() == null) {
       globalKey.currentState.showSnackBar(
         SnackBar(
           content: Text(
-            "Favor de Ingresar su Nombre",
+            "Favor de Ingresar su Nombre(s)",
           ),
         ),
       );
@@ -120,7 +126,7 @@ class _SignUpState extends State<SignUp> {
                     MyTextField(
                       controller: nombres,
                       obscureText: false,
-                      hintText: "Nombres",
+                      hintText: "Nombre(s)",
                     ),
                     MyTextField(
                       controller: apellidos,
@@ -144,7 +150,9 @@ class _SignUpState extends State<SignUp> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   button(
-                      ontap: () {},
+                      ontap: () {
+                        Navigator.pop(context);
+                      },
                       buttonName: "Cancelar",
                       color: Colors.grey,
                       textColor: Colors.black),
@@ -154,6 +162,13 @@ class _SignUpState extends State<SignUp> {
                   button(
                       ontap: () {
                         validation();
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => HomePage()));
+                        /* name = '$nombres $apellidos';
+                        name = name.toString();
+                        authService.registrar(correo, password, name); */
                       },
                       buttonName: "Registrar",
                       color: Colors.red,

@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:foodapp/screen/home_page.dart';
+import 'package:foodapp/screen/sing_up.dart';
 import 'package:foodapp/screen/widget/my_text_field.dart';
 
 class LoginPage extends StatelessWidget {
@@ -32,7 +34,9 @@ class LoginPage extends StatelessWidget {
               Icons.arrow_back_ios,
               color: Colors.black,
             ),
-            onPressed: () {}),
+            onPressed: () {
+              //Navigator.pop(context);
+            }),
       ),
       body: Container(
         margin: EdgeInsets.symmetric(horizontal: 45),
@@ -65,15 +69,52 @@ class LoginPage extends StatelessWidget {
               ],
             ),
             Container(
-              height: 60,
+              height: 50,
               width: 200,
               child: RaisedButton(
                 color: Colors.red,
                 shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(30)),
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => HomePage()));
+                },
                 child: Text(
                   "Login",
+                  style: TextStyle(color: Colors.white, fontSize: 20),
+                ),
+              ),
+            ),
+            Container(
+              height: 50,
+              width: 200,
+              child: RaisedButton(
+                color: Colors.blue,
+                shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(30)),
+                onPressed: () {
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => HomePage()));
+                },
+                child: Text(
+                  "Facebook",
+                  style: TextStyle(color: Colors.white, fontSize: 20),
+                ),
+              ),
+            ),
+            Container(
+              height: 50,
+              width: 200,
+              child: RaisedButton(
+                color: Colors.green,
+                shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(30)),
+                onPressed: () {
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => HomePage()));
+                },
+                child: Text(
+                  "Google",
                   style: TextStyle(color: Colors.white, fontSize: 20),
                 ),
               ),
@@ -81,14 +122,16 @@ class LoginPage extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Text(
-                  "Nuevo usuario?",
-                  style: TextStyle(color: Colors.grey),
-                ),
-                Text(
-                  "Registrate ahora",
-                  style: TextStyle(color: Colors.red),
-                )
+                Text("Nuevo usuario?", style: TextStyle(color: Colors.grey)),
+                TextButton(
+                    style: TextButton.styleFrom(
+                        textStyle: TextStyle(fontSize: 15)),
+                    onPressed: () {
+                      Navigator.push(context,
+                          MaterialPageRoute(builder: (context) => SignUp()));
+                    },
+                    child: Text('Registrate ahora',
+                        style: TextStyle(color: Colors.red)))
               ],
             )
           ],

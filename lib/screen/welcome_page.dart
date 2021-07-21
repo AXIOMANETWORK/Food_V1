@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:foodapp/screen/login_page.dart';
 
 class WelcomePage extends StatelessWidget {
   Widget button({@required String name, Color color, Color textColor}) {
@@ -23,35 +24,34 @@ class WelcomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.orange,
       body: Column(
         children: [
           Expanded(
             child: Container(
               child: Center(
-                child: Image.asset(
-                  'images/logo.png',
-                  height: 300,
-                  width: 300,
-                ),
+                child: Image.asset('images/logo.png',
+                    height: 300, width: 300, color: Colors.white),
               ),
             ),
           ),
           Expanded(
             child: Container(
               child: Column(
-                mainAxisAlignment: MainAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
                   Text(
                     "Bienvenido a FoodClic",
                     style: TextStyle(
                       fontSize: 38,
                       fontWeight: FontWeight.bold,
-                      color: Colors.orange.shade700,
+                      color: Colors.white,
                     ),
                   ),
                   Column(
                     children: [
-                      Text("Ordena la comida que quieras desde nuestra APP")
+                      Text("Ordena la comida que quieras desde nuestra APP",
+                          style: TextStyle(color: Colors.white, fontSize: 16))
                     ],
                   ),
                   button(
