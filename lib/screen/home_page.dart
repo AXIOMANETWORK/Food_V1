@@ -73,7 +73,7 @@ class HomePage extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
                 _cardImagen('images/comida_peruana.jpg', 'PERUANA'),
-                _cardImagen('images/comida_usa.jpg', 'USA')
+                _cardImagen('images/comida_usa.jpg', 'AMERICANA')
               ],
             ),
           ],
