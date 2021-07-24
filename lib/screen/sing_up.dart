@@ -120,12 +120,14 @@ class _SignUpState extends State<SignUp> {
             crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
-              Text(
-                "Inscribete",
-                style: TextStyle(
-                  color: Colors.orange,
-                  fontWeight: FontWeight.bold,
-                  fontSize: 40,
+              Center(
+                child: Text(
+                  "Food & Clic",
+                  style: TextStyle(
+                    color: Colors.orange,
+                    fontWeight: FontWeight.bold,
+                    fontSize: 40,
+                  ),
                 ),
               ),
               Container(
@@ -167,7 +169,7 @@ class _SignUpState extends State<SignUp> {
                       color: Colors.grey,
                       textColor: Colors.black),
                   SizedBox(
-                    width: 10,
+                    width: 20,
                   ),
                   button(
                       ontap: () {
@@ -181,7 +183,7 @@ class _SignUpState extends State<SignUp> {
                                 builder: (context) => HomePage()));
                       },
                       buttonName: "Registrar",
-                      color: Colors.red,
+                      color: Colors.orange.shade700,
                       textColor: Colors.white),
                 ],
               )

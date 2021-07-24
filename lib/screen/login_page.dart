@@ -116,7 +116,7 @@ class _LoginPageState extends State<LoginPage> {
               height: 50,
               width: 200,
               child: RaisedButton(
-                color: Colors.red,
+                color: Colors.orange.shade700,
                 shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(30)),
                 onPressed: () {
