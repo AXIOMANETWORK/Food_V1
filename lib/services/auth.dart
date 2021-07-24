@@ -1,4 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter_facebook_auth/flutter_facebook_auth.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 
 class Auth {
   final auth = FirebaseAuth.instance;
@@ -17,5 +19,51 @@ class Auth {
     } catch (e) {
       print(e);
     }
+  }
+
+  iniciarSesion(email, password) async {
+    String error = '';
+    try {
+      //auth.signInWithEmailAndPassword(email: email, password: password).then((UserCredential user) => );
+      await auth.signInWithEmailAndPassword(email: email, password: password);
+    } on FirebaseException catch (e) {
+      if (e.code == 'user-not-found') {
+        error = 'Credenciales incorrectas';
+      } else if (e.code == 'wrong-password') {
+        error = 'Credenciales incorrectas';
+      }
+    }
+    return error;
+  }
+
+  Future<UserCredential> signInWithFacebook() async {
+    // Trigger the sign-in flow
+    final AccessToken result = await FacebookAuth.instance.login();
+
+    // Create a credential from the access token
+    final facebookAuthCredential =
+        FacebookAuthProvider.credential(result.token);
+
+    // Once signed in, return the UserCredential
+    return await FirebaseAuth.instance
+        .signInWithCredential(facebookAuthCredential);
+  }
+
+  Future<UserCredential> signInWithGoogle() async {
+    // Trigger the authentication flow
+    final GoogleSignInAccount googleUser = await GoogleSignIn().signIn();
+
+    // Obtain the auth details from the request
+    final GoogleSignInAuthentication googleAuth =
+        await googleUser.authentication;
+
+    // Create a new credential
+    final credential = GoogleAuthProvider.credential(
+      accessToken: googleAuth.accessToken,
+      idToken: googleAuth.idToken,
+    );
+
+    // Once signed in, return the UserCredential
+    return await FirebaseAuth.instance.signInWithCredential(credential);
   }
 }

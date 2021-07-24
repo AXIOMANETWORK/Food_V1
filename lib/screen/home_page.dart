@@ -106,38 +106,43 @@ class HomePage extends StatelessWidget {
   }
 
   Widget _cardImagen(String url, String comida) {
-    return Card(
-      elevation: 10.0,
-      child: Container(
-        decoration: BoxDecoration(
-          image: DecorationImage(
-              image: AssetImage("$url"),
-              fit: BoxFit.fitWidth,
-              alignment: Alignment.topCenter),
-        ),
-        height: 80,
-        width: 170,
-        child: Center(
-          child: Stack(
-            children: <Widget>[
-              Text(
-                comida,
-                style: TextStyle(
-                  fontSize: 20,
-                  foreground: Paint()
-                    ..style = PaintingStyle.stroke
-                    ..strokeWidth = 6
-                    ..color = Colors.black,
+    return InkWell(
+      onTap: () {
+        print('Clickeaste en $comida');
+      },
+      child: Card(
+        elevation: 10.0,
+        child: Container(
+          decoration: BoxDecoration(
+            image: DecorationImage(
+                image: AssetImage("$url"),
+                fit: BoxFit.fitWidth,
+                alignment: Alignment.topCenter),
+          ),
+          height: 80,
+          width: 170,
+          child: Center(
+            child: Stack(
+              children: <Widget>[
+                Text(
+                  comida,
+                  style: TextStyle(
+                    fontSize: 20,
+                    foreground: Paint()
+                      ..style = PaintingStyle.stroke
+                      ..strokeWidth = 6
+                      ..color = Colors.black,
+                  ),
                 ),
-              ),
-              Text(
-                comida,
-                style: TextStyle(
-                  fontSize: 20,
-                  color: Colors.white,
+                Text(
+                  comida,
+                  style: TextStyle(
+                    fontSize: 20,
+                    color: Colors.white,
+                  ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
         ),
       ),

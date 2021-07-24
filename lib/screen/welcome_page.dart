@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:foodapp/screen/login_page.dart';
+import 'package:foodapp/screen/sing_up.dart';
 
 class WelcomePage extends StatelessWidget {
   Widget button({@required String name, Color color, Color textColor}) {
@@ -54,14 +55,58 @@ class WelcomePage extends StatelessWidget {
                           style: TextStyle(color: Colors.white, fontSize: 16))
                     ],
                   ),
-                  button(
-                      name: 'Iniciar Sesion',
-                      color: Colors.orange.shade700,
-                      textColor: Colors.white),
-                  button(
-                      name: 'Inscribete',
-                      color: Colors.white,
-                      textColor: Colors.orange.shade700),
+                  Column(
+                    children: [
+                      InkWell(
+                        child: Container(
+                          height: 50,
+                          width: 300,
+                          child: RaisedButton(
+                            color: Colors.orange.shade700,
+                            shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(30)),
+                            onPressed: () {
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => LoginPage()));
+                            },
+                            child: Text(
+                              "Iniciar Sesion",
+                              style:
+                                  TextStyle(color: Colors.white, fontSize: 20),
+                            ),
+                          ),
+                        ),
+                      )
+                    ],
+                  ),
+                  Column(
+                    children: [
+                      InkWell(
+                        child: Container(
+                          height: 50,
+                          width: 300,
+                          child: RaisedButton(
+                            color: Colors.white,
+                            shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(30)),
+                            onPressed: () {
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => SignUp()));
+                            },
+                            child: Text(
+                              "Inscribete",
+                              style: TextStyle(
+                                  color: Colors.orange.shade700, fontSize: 20),
+                            ),
+                          ),
+                        ),
+                      )
+                    ],
+                  ),
                 ],
               ),
             ),

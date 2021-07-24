@@ -1,31 +1,75 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:foodapp/screen/home_page.dart';
 import 'package:foodapp/screen/sing_up.dart';
 import 'package:foodapp/screen/widget/my_text_field.dart';
+import 'package:foodapp/services/auth.dart';
 
-class LoginPage extends StatelessWidget {
-//  Widget textField(
-//      {@required String hintText,
-//      @required IconData icon,
-//      @required Color iconColor}) {
-//    return TextFormField(
-//      decoration: InputDecoration(
-//        prefixIcon: Icon(
-//          icon,
-//          color: iconColor,
-//        ),
-//        hintText: hintText,
-//        hintStyle: TextStyle(color: Colors.orange.shade700),
-//        enabledBorder: UnderlineInputBorder(
-//          borderSide: BorderSide(color: Colors.grey),
-//        ),
-//    ),
-//   );
-// }
+class LoginPage extends StatefulWidget {
+  static Pattern pattern =
+      r'^(([^<>()[\]\\.,;:\s@\"]+(\[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$';
+
+  @override
+  _LoginPageState createState() => _LoginPageState();
+}
+
+class _LoginPageState extends State<LoginPage> {
+  TextEditingController correo = TextEditingController();
+  TextEditingController password = TextEditingController();
+  String mensaje = '';
+  RegExp regExp = RegExp(SignUp.pattern);
+  GlobalKey<ScaffoldState> globalKey = GlobalKey<ScaffoldState>();
+
+  final authService = Auth();
+
+  void validation() async {
+    if (correo.text.trim().isEmpty || correo.text.trim() == null) {
+      globalKey.currentState.showSnackBar(
+        SnackBar(
+          content: Text(
+            "Favor de Ingresar su Correo Electronico",
+          ),
+        ),
+      );
+      return;
+    } else if (!regExp.hasMatch(correo.text)) {
+      globalKey.currentState.showSnackBar(
+        SnackBar(
+          content: Text(
+            "Favor de Ingresar un correo valido",
+          ),
+        ),
+      );
+      return;
+    }
+    if (password.text.trim().isEmpty || password.text.trim() == null) {
+      globalKey.currentState.showSnackBar(
+        SnackBar(
+          content: Text(
+            "Favor de Ingresar su Contraseña",
+          ),
+        ),
+      );
+      return;
+    }
+
+    mensaje = await authService.iniciarSesion(correo.text, password.text);
+    if (mensaje == '') {
+      Navigator.push(
+          context, MaterialPageRoute(builder: (context) => HomePage()));
+    } else {
+      globalKey.currentState.showSnackBar(SnackBar(
+        content: Text(
+          mensaje,
+        ),
+      ));
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      key: globalKey,
       backgroundColor: Colors.white,
       appBar: AppBar(
         backgroundColor: Colors.white,
@@ -36,7 +80,7 @@ class LoginPage extends StatelessWidget {
         leading: IconButton(
             icon: Icon(Icons.arrow_back_ios, color: Colors.black),
             onPressed: () {
-              //Navigator.pop(context);
+              Navigator.pop(context);
             }),
       ),
       body: Container(
@@ -45,26 +89,25 @@ class LoginPage extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            Padding(
-              padding: const EdgeInsets.only(right: 170),
-              child: Text(
-                "Login In",
-                style: TextStyle(
-                  color: Colors.orange,
-                  fontSize: 40,
-                  fontWeight: FontWeight.bold,
+            Column(
+              children: [
+                Container(
+                  child: Center(
+                    child: Image.asset('images/logo.png',
+                        height: 90, width: 90, color: Colors.orange.shade700),
+                  ),
                 ),
-              ),
+              ],
             ),
             Column(
               children: [
                 MyTextField(
-                    controller: null, obscureText: false, hintText: 'Correo'),
+                    controller: correo, obscureText: false, hintText: 'Correo'),
                 SizedBox(
                   height: 25,
                 ),
                 MyTextField(
-                    controller: null,
+                    controller: password,
                     obscureText: true,
                     hintText: 'Contraseña'),
               ],
@@ -77,8 +120,7 @@ class LoginPage extends StatelessWidget {
                 shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(30)),
                 onPressed: () {
-                  Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => HomePage()));
+                  validation();
                 },
                 child: Text(
                   "Login",
@@ -93,9 +135,14 @@ class LoginPage extends StatelessWidget {
                 color: Colors.blue,
                 shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(30)),
-                onPressed: () {
-                  Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => HomePage()));
+                onPressed: () async {
+                  try {
+                    await authService.signInWithFacebook();
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) => HomePage()));
+                  } on PlatformException catch (e) {
+                    print(e);
+                  }
                 },
                 child: Text(
                   "Facebook",
@@ -110,9 +157,14 @@ class LoginPage extends StatelessWidget {
                 color: Colors.green,
                 shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(30)),
-                onPressed: () {
-                  Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => HomePage()));
+                onPressed: () async {
+                  try {
+                    await authService.signInWithGoogle();
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) => HomePage()));
+                  } on PlatformException catch (e) {
+                    print(e);
+                  }
                 },
                 child: Text(
                   "Google",

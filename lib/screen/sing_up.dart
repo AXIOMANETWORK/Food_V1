@@ -1,7 +1,5 @@
-//import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:foodapp/screen/home_page.dart';
-import 'package:foodapp/screen/welcome_page.dart';
 import 'package:foodapp/screen/widget/my_text_field.dart';
 import 'package:foodapp/services/auth.dart';
 
@@ -103,6 +101,18 @@ class _SignUpState extends State<SignUp> {
     return Scaffold(
       key: globalKey,
       backgroundColor: Colors.white,
+      appBar: AppBar(
+        backgroundColor: Colors.white,
+        title: Text(
+          'Sign In',
+          style: TextStyle(color: Colors.orange),
+        ),
+        leading: IconButton(
+            icon: Icon(Icons.arrow_back_ios, color: Colors.black),
+            onPressed: () {
+              Navigator.pop(context);
+            }),
+      ),
       body: SafeArea(
         child: Container(
           margin: EdgeInsets.symmetric(horizontal: 45),
@@ -162,13 +172,13 @@ class _SignUpState extends State<SignUp> {
                   button(
                       ontap: () {
                         validation();
+                        name = nombres.text + ' ' + apellidos.text;
+                        print(name);
+                        authService.registrar(correo.text, password.text, name);
                         Navigator.push(
                             context,
                             MaterialPageRoute(
                                 builder: (context) => HomePage()));
-                        /* name = '$nombres $apellidos';
-                        name = name.toString();
-                        authService.registrar(correo, password, name); */
                       },
                       buttonName: "Registrar",
                       color: Colors.red,
