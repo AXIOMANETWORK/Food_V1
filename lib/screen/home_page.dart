@@ -40,40 +40,72 @@ class HomePage extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
-                _cardImagen('images/comida_argentina.jpg', 'ARGENTINA'),
-                _cardImagen('images/comida_brasilena.jpg', 'BRASILEÑA'),
+                _cardImagen('images/Americana.jpg', 'Americana'),
+                _cardImagen('images/Arabe.jpg', 'Arabe'),
               ],
             ),
             SizedBox(height: 10.0),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
-                _cardImagen('images/comida_china.jpg', 'CHINA'),
-                _cardImagen('images/comida_espanola.jpg', 'ESPAÑOLA'),
+                _cardImagen('images/Argentina.jpg', 'Argentina'),
+                _cardImagen('images/Brasilena.jpg', 'Brasileña'),
               ],
             ),
             SizedBox(height: 10.0),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
-                _cardImagen('images/comida_italiana.jpg', 'ITALIANA'),
-                _cardImagen('images/comida_japonesa.jpg', 'JAPONESA'),
+                _cardImagen('images/China.jpg', 'China'),
+                _cardImagen('images/Cubana.jpg', 'Cubana'),
               ],
             ),
             SizedBox(height: 10.0),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
-                _cardImagen('images/comida_libanesa.jpeg', 'LIBANESA'),
-                _cardImagen('images/comida_mexicana.jpg', 'MEXICANA'),
+                _cardImagen('images/Espanola.jpeg', 'Española'),
+                _cardImagen('images/Griega.jpg', 'Griega'),
               ],
             ),
             SizedBox(height: 10.0),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
-                _cardImagen('images/comida_peruana.jpg', 'PERUANA'),
-                _cardImagen('images/comida_usa.jpg', 'AMERICANA')
+                _cardImagen('images/India.jpg', 'India'),
+                _cardImagen('images/Italiana.jpg', 'Italiana')
+              ],
+            ),
+            SizedBox(height: 10.0),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                _cardImagen('images/Japonesa.jpg', 'Japonesa'),
+                _cardImagen('images/Libanesa.jpg', 'Libanesa')
+              ],
+            ),
+            SizedBox(height: 10.0),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                _cardImagen('images/Mediterranea.jpg', 'Mediterranea'),
+                _cardImagen('images/Mexicana.jpg', 'Mexicana')
+              ],
+            ),
+            SizedBox(height: 10.0),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                _cardImagen('images/Peruana.jpg', 'Peruana'),
+                _cardImagen('images/Portuguesa.jpg', 'Portuguesa')
+              ],
+            ),
+            SizedBox(height: 10.0),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                _cardImagen('images/Tailandesa.jpg', 'Tailandesa'),
+                _cardImagen('images/Tex-Mex.jpg', 'Tex-Mex')
               ],
             ),
           ],
