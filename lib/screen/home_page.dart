@@ -64,7 +64,7 @@ class HomePage extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
-                _cardImagen('images/Espanola.jpeg', 'Española'),
+                _cardImagen('images/Espanola.jpg', 'Española'),
                 _cardImagen('images/Griega.jpg', 'Griega'),
               ],
             ),
@@ -81,7 +81,7 @@ class HomePage extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
                 _cardImagen('images/Japonesa.jpg', 'Japonesa'),
-                _cardImagen('images/Libanesa.jpg', 'Libanesa')
+                _cardImagen('images/Libanesa.jpeg', 'Libanesa')
               ],
             ),
             SizedBox(height: 10.0),
