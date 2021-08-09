@@ -1,9 +1,10 @@
 import 'package:firebase_auth/firebase_auth.dart';
-//import 'package:flutter_facebook_auth/flutter_facebook_auth.dart';
+import 'package:flutter_facebook_login/flutter_facebook_login.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 
 class Auth {
   final auth = FirebaseAuth.instance;
+  bool isLoggedIn=false;
 
   registrar(email, password, name) {
     try {
@@ -52,4 +53,20 @@ class Auth {
     // Once signed in, return the UserCredential
     return await FirebaseAuth.instance.signInWithCredential(credential);
   }
+
+
+  void initiateFacebookLogin() async{
+    var login=FacebookLogin();
+    var result= await login.logInWithReadPermissions(['email']);
+    switch(result.status){
+      case FacebookLoginStatus.error:
+        print("Surgio un Error");
+        break;
+      case FacebookLoginStatus.cancelledByUser:
+        print("Cancelado por el usuario");
+        break;
+
+    }
+  }
+
 }
