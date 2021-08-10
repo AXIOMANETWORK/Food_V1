@@ -137,7 +137,7 @@ class _LoginPageState extends State<LoginPage> {
                     borderRadius: BorderRadius.circular(30)),
                 onPressed: () async {
                   try {
-                    await authService.initiateFacebookLogin();
+                    //await authService.signInWithFacebook();
                     Navigator.push(context,
                         MaterialPageRoute(builder: (context) => HomePage()));
                   } on PlatformException catch (e) {
